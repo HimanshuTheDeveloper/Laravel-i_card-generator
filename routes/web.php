@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/create','icardController');
+Route::resource('/icard','icardController');
 
 
 // Route::get('/make','icardController@create');

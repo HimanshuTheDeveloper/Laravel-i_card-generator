@@ -54,7 +54,7 @@ class icardController extends Controller
         
         $icard->save();
 
-        return redirect('/create');
+        return redirect('/icard');
           
     }
 
@@ -67,6 +67,11 @@ class icardController extends Controller
     public function show($id)
     {
         //
+      
+        $details = i_card::find($id);
+
+        // return $details->all();
+        return view('icard',compact('details'));
     }
 
     /**
@@ -78,6 +83,9 @@ class icardController extends Controller
     public function edit($id)
     {
         //
+        $details = i_card::find($id);
+        // return $detail->name;
+        return view('edit',compact('details'));
     }
 
     /**
@@ -90,6 +98,7 @@ class icardController extends Controller
     public function update(Request $request, $id)
     {
         //
+        return "welcome in updated ";
     }
 
     /**
