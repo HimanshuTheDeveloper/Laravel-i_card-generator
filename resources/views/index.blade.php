@@ -25,6 +25,10 @@
                         
                          <a href="{!! url("icard/$detail->id"); !!}" class="btn btn-primary">I-Card</a>
                          <a href="{!! url("icard/$detail->id/edit"); !!}" class="btn btn-light">Edit</a>
+                       
+                         {!! Form::open(['method'=>'DELETE', 'action'=>['icardController@destroy', $detail->id]]) !!}
+                         <button type="submit" class="btn btn-danger">Delete</button>
+                        {!! Form::close() !!}
                         
                     </div>
                 </div>

@@ -12,15 +12,18 @@
 
          <div class='container my-2 bg-light text-dark p-4'>
 
-        {!!Form::open(['method'=>'PATCH','action'=> 'icardController@update'])!!}
-
-        
-        <div class='form-group'>
+        {!!Form::open(['method'=>'PATCH','action'=> ['icardController@update', $details->id]])!!}
+        {{-- <form action="{{ URL('icard', array('id'=>$details->id))}}" method="POST">
+            <input type="hidden" name="_method" value="PATCH">
+            {{ csrf_field() }} --}}
+         
+         
+         <div class='form-group'>
            
-           {!!Form::label('name','Student Name')!!}
-           {!!Form::text('name',$details->name,['class'=>'form-control'])!!}
-           
-           {!!Form::label('program','Program')!!}
+            {!!Form::label('name','Student Name')!!}
+            {!!Form::text('name',$details->name,['class'=>'form-control'])!!}
+            
+            {!!Form::label('program','Program')!!}
            {!!Form::text('program', $details->program ,['class'=>'form-control'])!!}
            
            {!!Form::label('student_id','Student Id')!!}
@@ -32,15 +35,29 @@
            {!!Form::label('address',' Student Address')!!}
            {!!Form::text('address', $details->address ,['class'=>'form-control'])!!}
            
+           <br>
            
-           {!!Form::submit('Update I-card',['class'=>'btn btn-primary my-2'])!!}
+           <button type="submit" class="btn btn-danger">Update</button>
+
            
-           
+       
            
            {!!Form::close()!!} 
+      
+           
+           
+           
+           {{-- {!!Form::open(['method'=>'PUT','action'=> ['icardController@update',$details->id]])!!} --}}
+
+
+           
+           
+           {{-- {!!Form::close()!!}  --}}
            
            </div>
+
+         </div>
           
    
 
-@stop
+@endsection

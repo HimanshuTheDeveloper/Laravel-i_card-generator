@@ -84,7 +84,7 @@ class icardController extends Controller
     {
         //
         $details = i_card::find($id);
-        // return $detail->name;
+        // return $details->name;
         return view('edit',compact('details'));
     }
 
@@ -98,7 +98,22 @@ class icardController extends Controller
     public function update(Request $request, $id)
     {
         //
-        return "welcome in updated ";
+        $input =  $request->all();
+        // return "record successfully submited";
+        // return  $request->all();
+        //  i_card::create($request->all());
+
+        $icard = i_card::find($id);
+        $icard->name = $request->name;
+        $icard->student_id = $request->student_id;
+        $icard->program = $request->program;
+        $icard->dob = $request->dob;
+        $icard->address = $request->address;
+        
+        $icard->save();
+
+        return redirect('/icard');
+          
     }
 
     /**
@@ -110,5 +125,9 @@ class icardController extends Controller
     public function destroy($id)
     {
         //
+        // return "you are in delete";
+        $user = i_card::find($id);
+        $user->delete();
+        return redirect('/icard');
     }
 }
